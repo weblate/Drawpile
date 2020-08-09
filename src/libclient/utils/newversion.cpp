@@ -37,7 +37,7 @@ NewVersionCheck::NewVersionCheck(QObject *parent)
 	: QObject(parent),
 	m_showBetas(false)
 {
-	auto m = VERSION_RE.match(DRAWPILE_VERSION);
+	auto m = VERSION_RE.match(DRAWPILE_VERSION_BARE);
 	Q_ASSERT(m.hasMatch());
 
 	m_server = m.captured(1).toInt();

@@ -210,7 +210,7 @@ if ( WIN32 )
 		"Drawpile client"
 		${WEBSITE}
 		"2006-2017 Calle Laakkonen"
-		${DRAWPILE_VERSION}
+		${DRAWPILE_VERSION_BARE}
 		"${CMAKE_SOURCE_DIR}/desktop/drawpile.ico"
 	)
 endif ( WIN32 )

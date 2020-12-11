@@ -62,6 +62,7 @@ namespace {
 		bool locked;
 		bool censored;
 		bool fixed;
+		bool clippingGroup;
 		QString compositeOp;
 	};
 
@@ -184,7 +185,7 @@ static bool readStackLayer(QXmlStreamReader &reader, Canvas &canvas, const QPoin
 	// Grab <layer> element attributes first
 	const QXmlStreamAttributes attrs = reader.attributes();
 
-	static const char *knownLayerAttributes[] = {"x", "y", "name", "src", "opacity", "visibility", "composite-op", "selected", "edit-locked", "background-tile", "censored", "fixed", nullptr };
+	static const char *knownLayerAttributes[] = {"x", "y", "name", "src", "opacity", "visibility", "composite-op", "selected", "edit-locked", "background-tile", "censored", "fixed", "clipping-group", nullptr };
 
 	if(hasUnknownAttributes("layer", attrs, knownLayerAttributes))
 		canvas.extensionsWarning = true;
@@ -199,6 +200,7 @@ static bool readStackLayer(QXmlStreamReader &reader, Canvas &canvas, const QPoin
 		attrToBool(attrs.value("edit-locked"), false, "true"),
 		attrToBool(attrs.value(DP_NAMESPACE, "censored"), false, "true"),
 		attrToBool(attrs.value(DP_NAMESPACE, "fixed"), false, "true"),
+		attrToBool(attrs.value(DP_NAMESPACE, "clipping-group"), false, "true"),
 		attrToString(attrs.value("composite-op"), QStringLiteral("src-over"))
 	};
 
@@ -507,7 +509,8 @@ static OraResult makeInitCommands(KZip &zip, const Canvas &canvas)
 			layerId,
 			0,
 			(layer.censored ? protocol::LayerAttributes::FLAG_CENSOR : 0) |
-			(layer.fixed ? protocol::LayerAttributes::FLAG_FIXED : 0),
+			(layer.fixed ? protocol::LayerAttributes::FLAG_FIXED : 0) |
+			(layer.clippingGroup ? protocol::LayerAttributes::FLAG_CLIPPING_GROUP : 0),
 			qRound(255 * layer.opacity),
 			blend
 		));

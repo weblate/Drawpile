@@ -92,6 +92,8 @@ static void writeStackStack(QXmlStreamWriter &writer, const paintcore::LayerStac
 			writer.writeAttribute(DP_NAMESPACE, "censored", "true");
 		if(l->info().fixed)
 			writer.writeAttribute(DP_NAMESPACE, "fixed", "true");
+		if(l->info().clippingGroup)
+			writer.writeAttribute(DP_NAMESPACE, "clipping-group", "true");
 
 		writer.writeEndElement();
 	}

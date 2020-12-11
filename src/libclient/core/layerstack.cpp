@@ -660,11 +660,10 @@ EditableLayer EditableLayerStack::createLayer(int id, int source, const QColor &
 
 	if(copy) {
 		editable.markOpaqueDirty();
-
-	} else if(color.alpha()>0) {
-		for(auto observer : d->m_observers)
-			observer->markDirty();
 	}
+
+	for(auto observer : d->m_observers)
+		observer->markDirty();
 
 	return editable;
 }
@@ -679,6 +678,9 @@ bool EditableLayerStack::deleteLayer(int id)
 		if(d->m_layers.at(i)->id() == id) {
 			EditableLayer(d->m_layers.at(i), d, contextId).markOpaqueDirty();
 			delete d->m_layers.takeAt(i);
+
+			for(auto observer : d->m_observers)
+				observer->markDirty();
 
 			return true;
 		}

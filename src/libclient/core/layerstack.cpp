@@ -247,54 +247,75 @@ void LayerStack::flattenTile(quint32 *data, int xindex, int yindex) const
 	// Composite visible layers
 	int layeridx = 0;
 	for(const Layer *l : m_layers) {
-		if(isVisible(layeridx)) {
-			const Tile &tile = l->tile(xindex, yindex);
-			const quint32 tint = layerTint(layeridx);
+		if(!l->isClippingGroup() && isVisible(layeridx)) {
+			flattenLayerTile(data, l, layeridx, xindex, yindex, false, compositePixels);
+		}
+		++layeridx;
+	}
+}
 
-			if(m_censorLayers && l->isCensored()) {
-				// This layer must be censored
-				if(!tile.isNull())
-					compositePixels(l->blendmode(), data, CENSORED_TILE.constData(),
-							Tile::LENGTH, layerOpacity(layeridx));
+void LayerStack::flattenLayerTile(quint32 *data, const Layer *l, int layeridx, int xindex, int yindex, bool inClippingGroup,
+		void (*composite)(BlendMode::Mode, quint32 *, const quint32 *, int , uchar)) const
+{
+	const Tile &tile = l->tile(xindex, yindex);
+	const quint32 tint = layerTint(layeridx);
 
-			} else if(l->sublayers().count() || tint!=0 || m_highlightId > 0) {
-				// Sublayers (or tint) present, composite them first
-				quint32 ldata[Tile::SIZE*Tile::SIZE];
-				tile.copyTo(ldata);
+	if(m_censorLayers && l->isCensored()) {
+		// This layer must be censored
+		if(!tile.isNull())
+			composite(l->blendmode(), data, CENSORED_TILE.constData(),
+					Tile::LENGTH, layerOpacity(layeridx));
 
-				for(const Layer *sl : l->sublayers()) {
-					if(sl->isVisible()) {
-						const Tile &subtile = sl->tile(xindex, yindex);
-						if(!subtile.isNull()) {
-							compositePixels(sl->blendmode(), ldata, subtile.constData(),
-									Tile::LENGTH, sl->opacity());
-						}
-					}
+	} else if(l->sublayers().count() || tint!=0 || m_highlightId > 0 || (!inClippingGroup && hasClippingGroup(layeridx))) {
+		// Sublayers (or tint) present, composite them first
+		quint32 ldata[Tile::LENGTH];
+		tile.copyTo(ldata);
+
+		for(const Layer *sl : l->sublayers()) {
+			if(sl->isVisible()) {
+				const Tile &subtile = sl->tile(xindex, yindex);
+				if(!subtile.isNull()) {
+					compositePixels(sl->blendmode(), ldata, subtile.constData(),
+							Tile::LENGTH, sl->opacity());
 				}
-
-				if(m_highlightId > 0 && m_highlightId == tile.lastEditedBy()) {
-					// MODE_RECOLOR looks really nice here, but can be misleading.
-					// Use per-pixel highlighting if/when per-pixel tagging is implemented.
-					compositePixels(BlendMode::MODE_NORMAL, ldata, ZEBRA_TILE.constData(),
-							Tile::LENGTH, 128);
-				}
-
-				if(tint)
-					tintPixels(ldata, sizeof ldata / sizeof *ldata, tint);
-
-
-				// Composite merged tile
-				compositePixels(l->blendmode(), data, ldata,
-						Tile::SIZE*Tile::SIZE, layerOpacity(layeridx));
-
-			} else if(!tile.isNull()) {
-				// No sublayers or tint, just this tile as it is
-				compositePixels(l->blendmode(), data, tile.constData(),
-						Tile::LENGTH, layerOpacity(layeridx));
 			}
 		}
 
-		++layeridx;
+		// Clipping groups aren't recursive, there's only one level of clippage at a time.
+		// If we want recursion at some point, layer groups/folders are the tool to solve it.
+		if(!inClippingGroup) {
+			flattenClippingGroupTile(ldata, layeridx, xindex, yindex);
+		}
+
+		if(m_highlightId > 0 && m_highlightId == tile.lastEditedBy()) {
+			// MODE_RECOLOR looks really nice here, but can be misleading.
+			// Use per-pixel highlighting if/when per-pixel tagging is implemented.
+			compositePixels(BlendMode::MODE_NORMAL, ldata, ZEBRA_TILE.constData(),
+					Tile::LENGTH, 128);
+		}
+
+		if(tint)
+			tintPixels(ldata, sizeof ldata / sizeof *ldata, tint);
+
+		// Composite merged tile
+		composite(l->blendmode(), data, ldata,
+				Tile::LENGTH, layerOpacity(layeridx));
+
+	} else if(!tile.isNull()) {
+		// No sublayers or tint, just this tile as it is
+		composite(l->blendmode(), data, tile.constData(),
+				Tile::LENGTH, layerOpacity(layeridx));
+	}
+}
+
+void LayerStack::flattenClippingGroupTile(quint32 *ldata, int layeridx, int xindex, int yindex) const
+{
+	const int layerCount = m_layers.size();
+	const Layer *clipped;
+	for(int i = layeridx + 1; i < layerCount && (clipped = m_layers.at(i))->isClippingGroup(); ++i) {
+		if(isVisible(i)) {
+			flattenLayerTile(ldata, clipped, i, xindex, yindex, true, compositePixelsPreservingAlpha);
+		}
 	}
 }
 
@@ -360,6 +381,12 @@ bool LayerStack::isVisible(int idx) const
 	}
 
 	return true;
+}
+
+bool LayerStack::hasClippingGroup(int idx) const
+{
+	Q_ASSERT(idx>=0 && idx < m_layers.size());
+	return idx + 1 < m_layers.size() && m_layers.at(idx + 1)->isClippingGroup();
 }
 
 Savepoint LayerStack::makeSavepoint()

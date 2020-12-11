@@ -173,10 +173,15 @@ private:
 	void endWriteSequence();
 
 	void flattenTile(quint32 *data, int xindex, int yindex) const;
+	void flattenLayerTile(quint32 *data, const Layer *l, int layeridx, int xindex, int yindex, bool inClippingGroup,
+			void (*composite)(BlendMode::Mode, quint32 *, const quint32 *, int , uchar)) const;
+	void flattenClippingGroupTile(quint32 *ldata, int layeridx, int xindex, int yindex) const;
 
 	bool isVisible(int idx) const;
 	int layerOpacity(int idx) const;
 	quint32 layerTint(int idx) const;
+	bool hasClippingGroup(int idx) const;
+	const Layer *getClippingGroupLayer(int idx) const;
 
 	QList<LayerStackObserver*> m_observers;
 

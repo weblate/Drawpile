@@ -561,4 +561,26 @@ void compositePixels(BlendMode::Mode mode, quint32 *base, const quint32 *over, i
 	}
 }
 
+void compositePixelsPreservingAlpha(BlendMode::Mode mode, quint32 *base, const quint32 *over, int len, uchar opacity)
+{
+	Q_ASSERT(len>=0);
+
+	switch(mode) {
+	case BlendMode::MODE_ERASE: /* not implemented */ break;
+	case BlendMode::MODE_NORMAL: Q_FALLTHROUGH();
+	case BlendMode::MODE_RECOLOR: doPixelComposite<blend_blend>(base, over, opacity, len); break;
+	case BlendMode::MODE_MULTIPLY: doPixelComposite<blend_multiply>(base, over, opacity, len); break;
+	case BlendMode::MODE_DIVIDE: doPixelComposite<blend_divide>(base, over, opacity, len); break;
+	case BlendMode::MODE_BURN: doPixelComposite<blend_burn>(base, over, opacity, len); break;
+	case BlendMode::MODE_DODGE: doPixelComposite<blend_dodge>(base, over, opacity, len); break;
+	case BlendMode::MODE_DARKEN: doPixelComposite<blend_darken>(base, over, opacity, len); break;
+	case BlendMode::MODE_LIGHTEN: doPixelComposite<blend_lighten>(base, over, opacity, len); break;
+	case BlendMode::MODE_SUBTRACT: doPixelComposite<blend_subtract>(base, over, opacity, len); break;
+	case BlendMode::MODE_ADD: doPixelComposite<blend_add>(base, over, opacity, len); break;
+	case BlendMode::MODE_BEHIND: /* not implemented */ break;
+	case BlendMode::MODE_COLORERASE: doPixelColorErase(base, over, opacity, len); break;
+	case BlendMode::MODE_REPLACE: /* not implemented */ break;
+	}
+}
+
 }

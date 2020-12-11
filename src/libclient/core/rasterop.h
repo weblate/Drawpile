@@ -49,6 +49,8 @@ void compositeMask(BlendMode::Mode mode, quint32 *base, quint32 color, const uch
  */
 void compositePixels(BlendMode::Mode mode, quint32 *base, const quint32 *over, int len, uchar opacity);
 
+void compositePixelsPreservingAlpha(BlendMode::Mode mode, quint32 *base, const quint32 *over, int len, uchar opacity);
+
 /**
  * Get a weighted average of the pixel data using the mask as the weights
  *

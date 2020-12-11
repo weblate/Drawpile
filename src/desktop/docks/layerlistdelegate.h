@@ -56,11 +56,15 @@ signals:
 
 private:
 	void drawOpacityGlyph(const QRectF& rect, QPainter *painter, float value, bool hidden, bool censored) const;
+	void drawLayerItemIcon(QPainter *painter, const QIcon &icon, const QRect &rect, int rightOffsetMultiplier) const;
+	const QIcon &pickClippingGroupIcon(const QModelIndex &index) const;
 
 	QIcon m_visibleIcon;
 	QIcon m_censoredIcon;
 	QIcon m_hiddenIcon;
 	QIcon m_fixedIcon;
+	QIcon m_clippingGroupIcon;
+	QIcon m_clippingGroupNaIcon;
 
 	bool m_showNumbers;
 };

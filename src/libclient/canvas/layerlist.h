@@ -65,6 +65,9 @@ struct LayerListItem {
 	//! This is a fixed background/foreground layer
 	bool fixed;
 
+	//! This layer is part of a clipping group
+	bool clippingGroup;
+
 	//! Get the LayerAttributes flags as a bitfield
 	uint8_t attributeFlags() const;
 };
@@ -103,7 +106,7 @@ public:
 	void clear();
 	void createLayer(uint16_t id, int index, const QString &title);
 	void deleteLayer(uint16_t id);
-	void changeLayer(uint16_t id, bool censored, bool fixed, float opacity, paintcore::BlendMode::Mode blend);
+	void changeLayer(uint16_t id, bool censored, bool fixed, bool clippingGroup, float opacity, paintcore::BlendMode::Mode blend);
 	void retitleLayer(uint16_t id, const QString &title);
 	void setLayerHidden(uint16_t id, bool hidden);
 	void reorderLayers(QList<uint16_t> neworder);

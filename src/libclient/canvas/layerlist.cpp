@@ -156,7 +156,7 @@ QModelIndex LayerListModel::layerIndex(uint16_t id)
 void LayerListModel::createLayer(uint16_t id, int index, const QString &title)
 {
 	beginInsertRows(QModelIndex(), index, index);
-	m_items.insert(index, LayerListItem { id, title, 1.0, paintcore::BlendMode::MODE_NORMAL, false, false, false });
+	m_items.insert(index, LayerListItem { id, title, 1.0, paintcore::BlendMode::MODE_NORMAL, false, false, false, false });
 	endInsertRows();
 }
 
@@ -181,7 +181,7 @@ void LayerListModel::clear()
 	endRemoveRows();
 }
 
-void LayerListModel::changeLayer(uint16_t id, bool censored, bool fixed, float opacity, paintcore::BlendMode::Mode blend)
+void LayerListModel::changeLayer(uint16_t id, bool censored, bool fixed, bool clippingGroup, float opacity, paintcore::BlendMode::Mode blend)
 {
 	int row = indexOf(id);
 	if(row<0)
@@ -192,6 +192,7 @@ void LayerListModel::changeLayer(uint16_t id, bool censored, bool fixed, float o
 	item.blend = blend;
 	item.censored = censored;
 	item.fixed = fixed;
+	item.clippingGroup = clippingGroup;
 	const QModelIndex qmi = index(row);
 	emit dataChanged(qmi, qmi);
 }
@@ -343,7 +344,8 @@ QString LayerListModel::getAvailableLayerName(QString basename) const
 uint8_t LayerListItem::attributeFlags() const
 {
 	return (censored ? protocol::LayerAttributes::FLAG_CENSOR : 0) |
-	       (fixed ? protocol::LayerAttributes::FLAG_FIXED : 0);
+	       (fixed ? protocol::LayerAttributes::FLAG_FIXED : 0) |
+	       (clippingGroup ? protocol::LayerAttributes::FLAG_CLIPPING_GROUP : 0);
 }
 
 }

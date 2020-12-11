@@ -621,6 +621,15 @@ void EditableLayer::setFixed(bool fixed)
 	}
 }
 
+void EditableLayer::setClippingGroup(bool clippingGroup)
+{
+	Q_ASSERT(d);
+	if(d->m_info.clippingGroup != clippingGroup) {
+		d->m_info.clippingGroup = clippingGroup;
+		markOpaqueDirty(true);
+	}
+}
+
 /**
  * @param hide new status
  */

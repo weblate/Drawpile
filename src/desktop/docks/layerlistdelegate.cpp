@@ -37,6 +37,8 @@ LayerListDelegate::LayerListDelegate(QObject *parent)
 	  m_censoredIcon(QIcon(":/icons/censored.svg")),
 	  m_hiddenIcon(icon::fromTheme("layer-visible-off")),
 	  m_fixedIcon(icon::fromTheme("window-pin")),
+	  m_clippingGroupIcon(icon::fromTheme("clipping-group")),
+	  m_clippingGroupNaIcon(icon::fromTheme("clipping-group-na")),
 	  m_showNumbers(false)
 {
 }
@@ -74,14 +76,12 @@ void LayerListDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
 
 	drawDisplay(painter, opt, textrect, title);
 
-	// Draw fixed icon
 	if(layer.fixed) {
-		m_fixedIcon.paint(painter,
-			opt.rect.right() - ICON_SIZE.width(),
-			opt.rect.top() + opt.rect.height()/2 - ICON_SIZE.height()/2,
-			ICON_SIZE.width(),
-			ICON_SIZE.height()
-		);
+		drawLayerItemIcon(painter, m_fixedIcon, opt.rect, 1);
+	}
+
+	if(layer.clippingGroup) {
+		drawLayerItemIcon(painter, pickClippingGroupIcon(index), opt.rect, 2);
 	}
 
 	painter->restore();
@@ -153,6 +153,36 @@ void LayerListDelegate::drawOpacityGlyph(const QRectF& rect, QPainter *painter, 
 			m_visibleIcon.paint(painter, r);
 		painter->restore();
 	}
+}
+
+void LayerListDelegate::drawLayerItemIcon(QPainter *painter, const QIcon &icon,
+		const QRect &rect, int rightOffsetMultiplier) const
+{
+	icon.paint(painter,
+		rect.right() - ICON_SIZE.width() * rightOffsetMultiplier,
+		rect.top() + rect.height() / 2 - ICON_SIZE.height() / 2,
+		ICON_SIZE.width(),
+		ICON_SIZE.height()
+	);
+}
+
+const QIcon &LayerListDelegate::pickClippingGroupIcon(const QModelIndex &index) const
+{
+	QModelIndex sibling;
+	for(int i = index.row() + 1; (sibling = index.siblingAtRow(i)).isValid(); ++i) {
+		const canvas::LayerListItem &clipped = sibling.data().value<canvas::LayerListItem>();
+		if(!clipped.clippingGroup) {
+			if(clipped.hidden || clipped.censored) {
+				// We're clipping a hidden or censored layer below us, show the not available icon.
+				return m_clippingGroupNaIcon;
+			} else {
+				// There's a valid layer to clip below us, show the regular icon.
+				return m_clippingGroupIcon;
+			}
+		}
+	}
+	// We're clipping nothing, so we won't be rendered at all, show the not available icon.
+	return m_clippingGroupNaIcon;
 }
 
 void LayerListDelegate::setShowNumbers(bool show) {

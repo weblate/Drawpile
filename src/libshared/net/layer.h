@@ -143,8 +143,9 @@ private:
  */
 class LayerAttributes : public Message {
 public:
-	static const uint8_t FLAG_CENSOR = 0x01; // censored layer
-	static const uint8_t FLAG_FIXED  = 0x02; // fixed background/foreground layer (drawn even in solo modo)
+	static const uint8_t FLAG_CENSOR         = 0x01; // censored layer
+	static const uint8_t FLAG_FIXED          = 0x02; // fixed background/foreground layer (drawn even in solo modo)
+	static const uint8_t FLAG_CLIPPING_GROUP = 0x04; // clipping group (preserves alpha of next non-grouped layer below)
 
 	LayerAttributes(uint8_t ctx, uint16_t id, uint8_t sublayer, uint8_t flags, uint8_t opacity, uint8_t blend)
 		: Message(MSG_LAYER_ATTR, ctx), m_id(id),
@@ -162,6 +163,7 @@ public:
 
 	bool isCensored() const { return m_flags & FLAG_CENSOR; }
 	bool isFixed() const { return m_flags & FLAG_FIXED; }
+	bool isClippingGroup() const { return m_flags & FLAG_CLIPPING_GROUP; }
 
 	QString messageName() const override { return QStringLiteral("layerattr"); }
 

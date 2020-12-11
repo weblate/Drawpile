@@ -128,7 +128,8 @@ StateSavepoint StateSavepoint::fromCanvasSavepoint(const paintcore::Savepoint &s
 			l->blendmode(),
 			l->isHidden(),
 			l->isCensored(),
-			l->isFixed()
+			l->isFixed(),
+			l->isClippingGroup()
 		};
 	}
 	return StateSavepoint(d);
@@ -525,7 +526,8 @@ void StateTracker::handleLayerAttributes(const protocol::LayerAttributes &cmd)
 		layer.setOpacity(cmd.opacity());
 		layer.setCensored(cmd.isCensored());
 		layer.setFixed(cmd.isFixed());
-		m_layerlist->changeLayer(layer->id(), cmd.isCensored(), cmd.isFixed(), cmd.opacity() / 255.0, paintcore::BlendMode::Mode(cmd.blend()));
+		layer.setClippingGroup(cmd.isClippingGroup());
+		m_layerlist->changeLayer(layer->id(), cmd.isCensored(), cmd.isFixed(), cmd.isClippingGroup(), cmd.opacity() / 255.0, paintcore::BlendMode::Mode(cmd.blend()));
 	}
 }
 

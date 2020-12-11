@@ -77,6 +77,9 @@ LayerList::LayerList(QWidget *parent)
 	m_menuFixedAction = m_layermenu->addAction(tr("Fixed"), this, SLOT(setSelectedFixed(bool)));
 	m_menuFixedAction->setCheckable(true);
 
+	m_menuClippingGroupAction = m_layermenu->addAction(tr("Clipping group"), this, SLOT(setSelectedClippingGroup(bool)));
+	m_menuClippingGroupAction->setCheckable(true);
+
 	QActionGroup *makeDefault = new QActionGroup(this);
 	makeDefault->setExclusive(true);
 	m_menuDefaultAction = m_layermenu->addAction(tr("Default"), this, SLOT(setSelectedDefault()));
@@ -334,6 +337,20 @@ void LayerList::setSelectedFixed(bool fixed)
 	}
 }
 
+void LayerList::setSelectedClippingGroup(bool clippingGroup)
+{
+	QModelIndex index = currentSelection();
+	if(index.isValid()) {
+		emit layerCommand(updateLayerAttributesMessage(
+			m_canvas->localUserId(),
+			index.data().value<canvas::LayerListItem>(),
+			ChangeFlags<uint8_t>().set(protocol::LayerAttributes::FLAG_CLIPPING_GROUP, clippingGroup),
+			-1,
+			-1
+		));
+	}
+}
+
 void LayerList::hideSelected()
 {
 	QModelIndex index = currentSelection();
@@ -564,6 +581,7 @@ void LayerList::dataChanged(const QModelIndex &topLeft, const QModelIndex &botto
 		m_aclmenu->setCensored(layer.censored);
 		m_menuDefaultAction->setChecked(currentSelection().data(canvas::LayerListModel::IsDefaultRole).toBool());
 		m_menuFixedAction->setChecked(layer.fixed);
+		m_menuClippingGroupAction->setChecked(layer.clippingGroup);
 		m_ui->opacity->setValue(layer.opacity * 255);
 
 		int blendmode = m_ui->blendmode->currentData().toInt();

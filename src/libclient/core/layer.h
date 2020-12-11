@@ -52,6 +52,7 @@ struct LayerInfo {
 	bool hidden = false;
 	bool censored = false;
 	bool fixed = false;
+	bool clippingGroup = false;
 	BlendMode::Mode blend = BlendMode::MODE_NORMAL;
 
 	LayerInfo() = default;
@@ -136,6 +137,9 @@ public:
 
 	//! Is this a fixed background/foreground layer
 	bool isFixed() const { return m_info.fixed; }
+
+	//! Is this layer part of a clipping group
+	bool isClippingGroup() const { return m_info.clippingGroup; }
 
 	/**
 	 * @brief Get a sublayer
@@ -277,6 +281,9 @@ public:
 
 	//! Make this a fixed layer
 	void setFixed(bool fixed);
+
+	//! Set this layer to be part of an alpha-preserving clipping group
+	void setClippingGroup(bool clippingGroup);
 
 	//! Empty this layer
 	void makeBlank();

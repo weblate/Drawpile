@@ -254,8 +254,8 @@ void LayerStack::flattenTile(quint32 *data, int xindex, int yindex) const
 	}
 }
 
-void LayerStack::flattenLayerTile(quint32 *data, const Layer *l, int layeridx, int xindex, int yindex, bool inClippingGroup,
-		void (*composite)(BlendMode::Mode, quint32 *, const quint32 *, int , uchar)) const
+void LayerStack::flattenLayerTile(quint32 *data, const Layer *l, int layeridx, int xindex, int yindex,
+		bool inClippingGroup, CompositePixelsFn composite) const
 {
 	const Tile &tile = l->tile(xindex, yindex);
 	const quint32 tint = layerTint(layeridx);

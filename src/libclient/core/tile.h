@@ -20,6 +20,7 @@
 #define TILE_H
 
 #include "blendmodes.h"
+#include "rasterop.h"
 
 #include <QSharedDataPointer>
 
@@ -132,7 +133,7 @@ class Tile {
 		std::array<quint32, 5> weightedAverage(const uchar *weights, int x, int y, int w, int h, int skip) const;
 
 		//! Composite another tile with this tile
-		void merge(const Tile &tile, uchar opacity, BlendMode::Mode mode);
+		void merge(const Tile &tile, uchar opacity, BlendMode::Mode mode, CompositePixelsFn composite = compositePixels);
 
 		//! Copy the contents of this tile onto the given spot on an image
 		void copyToImage(QImage& image, int x, int y) const;

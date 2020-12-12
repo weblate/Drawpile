@@ -26,6 +26,8 @@
 
 namespace paintcore {
 
+typedef void (*CompositePixelsFn)(BlendMode::Mode mode, quint32 *base, const quint32 *over, int len, uchar opacity);
+
 /**
  * Composite a color using a mask onto an image.
  * @param mode composition mode

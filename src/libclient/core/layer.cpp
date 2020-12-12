@@ -839,9 +839,13 @@ void EditableLayer::merge(const Layer *layer)
 	// are all done to the same vector
 	d->m_tiles.detach();
 
+	// Merging a clipping group into a regular layer needs to preserve alpha
+	CompositePixelsFn composite = !d->isClippingGroup() && layer->isClippingGroup()
+			? compositePixelsPreservingAlpha : compositePixels;
+
 	// Merge tiles
-	concurrentForEach<int>(mergeidx, [this, layer](int idx) {
-		d->m_tiles[idx].merge(layer->m_tiles.at(idx), layer->opacity(), layer->blendmode());
+	concurrentForEach<int>(mergeidx, [this, layer, composite](int idx) {
+		d->m_tiles[idx].merge(layer->m_tiles.at(idx), layer->opacity(), layer->blendmode(), composite);
 	});
 
 	// Merging a layer does not cause an immediate visual change, so we don't

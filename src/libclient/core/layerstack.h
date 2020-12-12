@@ -173,8 +173,8 @@ private:
 	void endWriteSequence();
 
 	void flattenTile(quint32 *data, int xindex, int yindex) const;
-	void flattenLayerTile(quint32 *data, const Layer *l, int layeridx, int xindex, int yindex, bool inClippingGroup,
-			void (*composite)(BlendMode::Mode, quint32 *, const quint32 *, int , uchar)) const;
+	void flattenLayerTile(quint32 *data, const Layer *l, int layeridx, int xindex, int yindex,
+			bool inClippingGroup, CompositePixelsFn composite) const;
 	void flattenClippingGroupTile(quint32 *ldata, int layeridx, int xindex, int yindex) const;
 
 	bool isVisible(int idx) const;

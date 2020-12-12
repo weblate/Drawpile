@@ -189,11 +189,12 @@ std::array<quint32, 5> Tile::weightedAverage(const uchar *weights, int x, int y,
  * @param tile the tile which will be composited over this tile
  * @param opacity opacity modifier of tile
  * @param blend blending mode
+ * @param composite pixel composition function, to handle clipping groups
  */
-void Tile::merge(const Tile &tile, uchar opacity, BlendMode::Mode blend)
+void Tile::merge(const Tile &tile, uchar opacity, BlendMode::Mode mode, CompositePixelsFn composite)
 {
 	if(!tile.isNull()) {
-		compositePixels(blend, data(), tile.constData(), SIZE*SIZE, opacity);
+		composite(mode, data(), tile.constData(), SIZE * SIZE, opacity);
 		m_data->lastEditedBy = tile.lastEditedBy();
 	}
 }

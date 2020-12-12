@@ -198,9 +198,24 @@ QImage LayerStack::toFlatImage(bool includeAnnotations, bool includeBackground) 
 	if(includeBackground)
 		ef.putTile(0, 0, 9999*9999, m_backgroundTile);
 
-	for(int i=0;i<m_layers.size();++i) {
-		if(m_layers.at(i)->isVisible() && (includeBackground || !m_layers.at(i)->isFixed()))
-			ef.merge(m_layers.at(i));
+	int layerCount = m_layers.size();
+	for(int i = 0; i < layerCount; ++i) {
+		Layer *layer = m_layers.at(i);
+		if(layer->isVisible() && !layer->isClippingGroup() && (includeBackground || !layer->isFixed())) {
+			// Clipping groups need to be merged together first so that the
+			// alpha of the layer that's being clipped is preserved.
+			if(i + 1 < layerCount && m_layers.at(i + 1)->isClippingGroup()) {
+				Layer group(0, QString(), Qt::transparent, size());
+				EditableLayer eg(&group, nullptr, 0);
+				eg.merge(layer);
+				for(Layer *clip; i + 1 < layerCount && (clip = m_layers.at(i + 1))->isClippingGroup(); ++i) {
+					eg.merge(clip);
+				}
+				ef.merge(&group);
+			} else {
+				ef.merge(layer);
+			}
+		}
 	}
 
 	QImage image = ef->toImage();

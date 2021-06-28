@@ -570,6 +570,7 @@ void compositePixelsPreservingAlpha(BlendMode::Mode mode, quint32 *base, const q
 	case BlendMode::MODE_NORMAL: Q_FALLTHROUGH();
 	case BlendMode::MODE_RECOLOR: doPixelComposite<blend_blend>(base, over, opacity, len); break;
 	case BlendMode::MODE_MULTIPLY: doPixelComposite<blend_multiply>(base, over, opacity, len); break;
+	case BlendMode::MODE_SCREEN: doPixelComposite<blend_screen>(base, over, opacity, len); break;
 	case BlendMode::MODE_DIVIDE: doPixelComposite<blend_divide>(base, over, opacity, len); break;
 	case BlendMode::MODE_BURN: doPixelComposite<blend_burn>(base, over, opacity, len); break;
 	case BlendMode::MODE_DODGE: doPixelComposite<blend_dodge>(base, over, opacity, len); break;
@@ -579,6 +580,10 @@ void compositePixelsPreservingAlpha(BlendMode::Mode mode, quint32 *base, const q
 	case BlendMode::MODE_ADD: doPixelComposite<blend_add>(base, over, opacity, len); break;
 	case BlendMode::MODE_BEHIND: /* not implemented */ break;
 	case BlendMode::MODE_COLORERASE: doPixelColorErase(base, over, opacity, len); break;
+	case BlendMode::MODE_HSL_HUE: doHslPixelComposite<true, false, false>(base, over, opacity, len); break;
+	case BlendMode::MODE_HSL_SATURATION: doHslPixelComposite<false, true, false>(base, over, opacity, len); break;
+	case BlendMode::MODE_HSL_COLOR: doHslPixelComposite<true, true, false>(base, over, opacity, len); break;
+	case BlendMode::MODE_HSL_LUMINOSITY: doHslPixelComposite<false, false, true>(base, over, opacity, len); break;
 	case BlendMode::MODE_REPLACE: /* not implemented */ break;
 	}
 }

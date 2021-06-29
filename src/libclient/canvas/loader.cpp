@@ -239,7 +239,8 @@ MessageList SnapshotLoader::loadInitCommands()
 			layer->id(),
 			0,
 			(layer->isCensored() ? protocol::LayerAttributes::FLAG_CENSOR : 0) |
-			(layer->isFixed() ? protocol::LayerAttributes::FLAG_FIXED : 0),
+			(layer->isFixed() ? protocol::LayerAttributes::FLAG_FIXED : 0) |
+			(layer->isClippingGroup() ? protocol::LayerAttributes::FLAG_CLIPPING_GROUP : 0),
 			layer->opacity(),
 			layer->blendmode()
 		));

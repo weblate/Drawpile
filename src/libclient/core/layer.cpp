@@ -626,7 +626,7 @@ void EditableLayer::setClippingGroup(bool clippingGroup)
 	Q_ASSERT(d);
 	if(d->m_info.clippingGroup != clippingGroup) {
 		d->m_info.clippingGroup = clippingGroup;
-		markOpaqueDirty(true);
+		OBSERVERS(markClippingGroupsDirty(contextId, d->id()));
 	}
 }
 

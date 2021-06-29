@@ -20,6 +20,7 @@
 #include "layerstackobserver.h"
 #include "layerstack.h"
 #include "concurrent.h"
+#include "layer.h"
 
 #include <QPainter>
 
@@ -149,6 +150,26 @@ void LayerStackObserver::canvasBackgroundChanged(const Tile &tile)
 	}
 
 	markDirty();
+}
+
+void LayerStackObserver::markClippingGroupsDirty(int contextId, int layerId)
+{
+	int index = m_layerstack->indexOf(layerId);
+	if(index >= 0) {
+		// Mark the given layer dirty.
+		EditableLayerStack editor = m_layerstack->editor(contextId);
+		editor.getEditableLayerByIndex(index).markOpaqueDirty(true);
+		// Mark all clipping groups above it dirty as well.
+		int count = m_layerstack->layerCount();
+		for(int i = index + 1; i < count; ++i) {
+			const Layer *layer = m_layerstack->getLayerByIndex(i);
+			if(layer->isClippingGroup()) {
+				editor.getEditableLayerByIndex(i).markOpaqueDirty();
+			} else {
+				break;
+			}
+		}
+	}
 }
 
 namespace {

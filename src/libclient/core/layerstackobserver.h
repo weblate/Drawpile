@@ -80,6 +80,17 @@ public:
 	 */
 	void canvasResized(int xoffset, int yoffset, const QSize &oldsize);
 
+	/**
+	 * @brief Marks the given layer and all clipping groups above it as dirty.
+	 *
+	 * Necessary when a clipping group is toggled in the middle of a stack of them,
+	 * since all groups above that one now need to change their clipped pixels.
+	 *
+	 * @param contextId Context id to edit the layers with.
+	 * @param layerId The id of the target layer to start from.
+	 */
+	void markClippingGroupsDirty(int contextId, int layerId);
+
 protected:
 	//! An editing operation just finished and pixels under the given area have changed
 	virtual void areaChanged(const QRect &area) = 0;

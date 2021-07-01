@@ -173,6 +173,8 @@ public slots:
 
 	void updateShortcuts();
 
+	void setEnableViewportEntryHack(bool enabled);
+
 protected:
 	void enterEvent(QEvent *event) override;
 	void leaveEvent(QEvent *event) override;
@@ -283,6 +285,13 @@ private:
 	qreal m_dpi;
 	int m_brushCursorStyle;
 	qreal m_brushOutlineWidth;
+
+	// On some Linux systems, the viewport doesn't properly trigger mouse enter
+	// events through tablet move events, which causes the cursor to not update.
+	// This hack leaves those events unaccepted, which causes a mouse move event
+	// to be synthesized. This is picked up by the viewport and ignored by the
+	// canvas view by checking for the synthetic flag.
+	bool m_enableViewportEntryHack;
 };
 
 }

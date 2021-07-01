@@ -1,4 +1,4 @@
-/*
+/* \
    Drawpile - a collaborative drawing program.
 
    Copyright (C) 2006-2019 Calle Laakkonen
@@ -54,7 +54,8 @@ CanvasView::CanvasView(QWidget *parent)
 	m_touching(false), m_touchRotating(false),
 	m_dpi(96),
 	m_brushCursorStyle(0),
-	m_brushOutlineWidth(1.0)
+	m_brushOutlineWidth(1.0),
+	m_enableViewportEntryHack(false)
 {
 	viewport()->setAcceptDrops(true);
 #ifdef Q_OS_MAC // Standard touch events seem to work better with mac touchpad
@@ -384,6 +385,11 @@ void CanvasView::drawForeground(QPainter *painter, const QRectF& rect)
 	}
 }
 
+void CanvasView::setEnableViewportEntryHack(bool enabled)
+{
+	m_enableViewportEntryHack = enabled;
+}
+
 void CanvasView::enterEvent(QEvent *event)
 {
 	QGraphicsView::enterEvent(event);
@@ -573,6 +579,8 @@ void CanvasView::penMoveEvent(const QPointF &pos, qreal pressure, Qt::MouseButto
 //! Handle mouse motion events
 void CanvasView::mouseMoveEvent(QMouseEvent *event)
 {
+	if(m_enableViewportEntryHack && (event->source() & Qt::MouseEventSynthesizedByQt))
+		return;
 	if(m_pendown == TABLETDOWN)
 		return;
 	if(m_touching)
@@ -853,7 +861,8 @@ bool CanvasView::viewportEvent(QEvent *event)
 	}
 	else if(event->type() == QEvent::TabletMove && m_enableTablet) {
 		QTabletEvent *tabev = static_cast<QTabletEvent*>(event);
-		tabev->accept();
+		if (!m_enableViewportEntryHack)
+			tabev->accept();
 
 		penMoveEvent(
 			tabev->posF(),

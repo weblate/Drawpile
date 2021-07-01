@@ -114,6 +114,22 @@ const Preset *PresetModel::searchPresetById(const QString &id) const
 	return i >= 0 ? &m_presets.at(i) : nullptr;
 }
 
+int PresetModel::searchIndexByUuid(const QString &uuid) const
+{
+	for(int i = 0; i < m_presets.size(); ++i) {
+		if(m_presets.at(i).uuid == uuid) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+const Preset *PresetModel::searchPresetByUuid(const QString &uuid) const
+{
+	const int i = searchIndexByUuid(uuid);
+	return i >= 0 ? &m_presets.at(i) : nullptr;
+}
+
 
 void PresetModel::add(const Preset &preset)
 {
@@ -152,6 +168,7 @@ void PresetModel::restoreSettings()
 		m_presets
 		<< Preset {
 			Ulid::make().toString(),
+			"",
 			"Stylus",
 			8,
 			PressureMapping {
@@ -162,6 +179,7 @@ void PresetModel::restoreSettings()
 		}
 		<< Preset {
 			Ulid::make().toString(),
+			"",
 			"Distance",
 			8,
 			PressureMapping {
@@ -172,6 +190,7 @@ void PresetModel::restoreSettings()
 		}
 		<< Preset {
 			Ulid::make().toString(),
+			"",
 			"Velocity",
 			8,
 			PressureMapping {
@@ -205,11 +224,31 @@ Preset Preset::loadFromSettings(const QSettings &cfg)
 	p.id = cfg.value("id").toString();
 	if(p.id.isEmpty())
 		p.id = Ulid::make().toString();
+	p.uuid = cfg.value("uuid").toString();
 	p.name = cfg.value("name").toString();
 	p.smoothing = cfg.value("smoothing").toInt();
 	p.curve.mode = PressureMapping::Mode(cfg.value("mode").toInt());
 	p.curve.param = cfg.value("param").toReal();
-	p.curve.curve.fromString(cfg.value("curve").toString());
+	QString curve = cfg.value("curve").toString();
+	if(curve.isEmpty()) {
+		p.curve.mode = PressureMapping::Mode(cfg.value("pressuremode").toInt());
+		switch(p.curve.mode) {
+		case PressureMapping::STYLUS:
+			curve = cfg.value("pressurecurve").toString();
+			break;
+		case PressureMapping::DISTANCE:
+			p.curve.param = cfg.value("distance").toReal();
+			curve = cfg.value("distancecurve").toString();
+			break;
+		case PressureMapping::VELOCITY:
+			p.curve.param = cfg.value("velocity").toReal();
+			curve = cfg.value("velocitycurve").toString();
+			break;
+		default:
+			break;
+		}
+	}
+	p.curve.curve.fromString(curve);
 	return p;
 }
 
@@ -221,6 +260,15 @@ void Preset::saveToSettings(QSettings &cfg) const
 	cfg.setValue("mode", curve.mode);
 	cfg.setValue("param", curve.param);
 	cfg.setValue("curve", curve.curve.toString());
+	// Remove old configuration format of input presets.
+	cfg.remove("uuid");
+	cfg.remove("pressuremode");
+	cfg.remove("pressurecurve");
+	cfg.remove("distancecurve");
+	cfg.remove("velocitycurve");
+	cfg.remove("distance");
+	cfg.remove("velocity");
+
 }
 
 }

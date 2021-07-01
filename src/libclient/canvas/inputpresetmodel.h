@@ -31,6 +31,9 @@ struct Preset {
 	//! A unique ID for the preset
 	QString id;
 
+	//! Backward compatibility with the old input preset format.
+	QString uuid;
+
 	//! Human readable name of the preset
 	QString name;
 
@@ -66,6 +69,9 @@ public:
 	const Preset *at(int i) const;
 	int searchIndexById(const QString &id) const;
 	const Preset *searchPresetById(const QString &id) const;
+
+	int searchIndexByUuid(const QString &id) const;
+	const Preset *searchPresetByUuid(const QString &id) const;
 
 	void add(const Preset &preset);
 	void update(int index, const Preset &preset);

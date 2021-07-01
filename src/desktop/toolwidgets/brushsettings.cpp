@@ -51,6 +51,7 @@ namespace {
 		paintcore::BlendMode::Mode eraserMode = paintcore::BlendMode::MODE_ERASE;
 
 		QString inputPresetId;
+		QString inputPresetUuid;
 	};
 }
 
@@ -119,7 +120,9 @@ struct BrushSettings::Private {
 	{
 		const input::Preset *preset = presetFor(tool);
 		if(!preset) {
-			preset = presetModel->at(0);
+			preset = presetModel->searchPresetByUuid(tool.inputPresetUuid);
+			if(!preset)
+				preset = presetModel->at(0);
 			if(preset)
 				tool.inputPresetId = preset->id;
 		}
@@ -557,6 +560,7 @@ void BrushSettings::restoreToolSettings(const ToolProperties &cfg)
 		tool.normalMode = paintcore::BlendMode::Mode(s["normalMode"].toInt());
 		tool.eraserMode = paintcore::BlendMode::Mode(s["eraserMode"].toInt());
 		tool.inputPresetId = s["inputPresetId"].toString();
+		tool.inputPresetUuid = s["inputPresetUuid"].toString();
 		d->updateInputPresetUuid(tool);
 
 		if(!d->shareBrushSlotColor)

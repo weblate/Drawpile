@@ -142,6 +142,7 @@ void InputSettings::applyUiToPreset()
 			m_ui->preset->currentIndex(),
 			input::Preset{
 				current->id,
+				current->uuid,
 				current->name,
 				m_ui->smoothing->value(),
 				PressureMapping {

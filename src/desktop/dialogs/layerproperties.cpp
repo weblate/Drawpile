@@ -89,6 +89,11 @@ void LayerProperties::emitChanges()
         c.changes |= CHANGE_FIXED;
     }
 
+    c.clippingGroup = m_ui->clippingGroup->isChecked();
+    if(c.clippingGroup != m_layerData.clippingGroup) {
+        c.changes |= CHANGE_CLIPPING_GROUP;
+    }
+
     if(m_ui->defaultLayer->isEnabled() && m_ui->defaultLayer->isChecked()) {
         c.changes |= CHANGE_DEFAULT;
         c.defaultLayer = true;
@@ -105,6 +110,7 @@ void LayerProperties::applyLayerDataToUi()
     m_ui->opacitySpinner->setValue(layerDataOpacity());
     m_ui->visible->setChecked(!m_layerData.hidden);
     m_ui->fixed->setChecked(m_layerData.fixed);
+    m_ui->clippingGroup->setChecked(m_layerData.clippingGroup);
     m_ui->defaultLayer->setChecked(m_layerData.defaultLayer);
     m_ui->defaultLayer->setEnabled(!m_layerData.defaultLayer);
     int blendModeIndex = searchBlendModeIndex(m_layerData.blend);

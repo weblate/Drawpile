@@ -43,6 +43,7 @@ public:
         paintcore::BlendMode::Mode blend;
         bool hidden;
         bool fixed;
+        bool clippingGroup;
         bool defaultLayer;
     };
 
@@ -54,6 +55,7 @@ public:
         CHANGE_HIDDEN = 1 << 3,
         CHANGE_FIXED = 1 << 4,
         CHANGE_DEFAULT = 1 << 5,
+        CHANGE_CLIPPING_GROUP = 1 << 6,
     };
 
     struct ChangedLayerData : public LayerData {

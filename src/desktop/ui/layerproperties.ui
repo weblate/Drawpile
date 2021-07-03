@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>298</width>
-    <height>222</height>
+    <height>250</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -107,6 +107,13 @@
     <widget class="QCheckBox" name="fixed">
      <property name="text">
       <string>Fixed</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="clippingGroup">
+     <property name="text">
+      <string>Clipping Group</string>
      </property>
     </widget>
    </item>

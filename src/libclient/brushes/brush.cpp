@@ -209,7 +209,7 @@ void ClassicBrush::updateCurve(const KisCubicCurve &src, DP_ClassicBrushCurve &d
 
 
 MyPaintBrush::MyPaintBrush()
-	: m_brush{{0.0f, 0.0f, 0.0f, 1.0f}, false, false}
+	: m_brush{{0.0f, 0.0f, 0.0f, 1.0f}, false, false, true}
 	, m_settings{nullptr}
 	, m_stabilizerSampleCount{0}
 	, m_curves{}
@@ -345,6 +345,7 @@ QJsonObject MyPaintBrush::toJson() const
 		{"settings", QJsonObject {
 			{"lock_alpha", m_brush.lock_alpha},
 			{"erase", m_brush.erase},
+			{"indirect", !m_brush.incremental},
 			{"stabilizer", m_stabilizerSampleCount},
 			{"mapping", jsonMapping},
 		}},
@@ -362,6 +363,7 @@ MyPaintBrush MyPaintBrush::fromJson(const QJsonObject &json)
 	const QJsonObject o = json["settings"].toObject();
 	b.m_brush.lock_alpha = o["lock_alpha"].toBool();
 	b.m_brush.erase = o["erase"].toBool();
+	b.m_brush.incremental = !o["indirect"].toBool();
 	b.loadJsonSettings(o["mapping"].toObject());
 
 	// If there's no Drawpile stabilizer defined, we get a sensible default

@@ -31,12 +31,14 @@ private slots:
 	void loadFrame();
 	void playPause();
 	void rewind();
-	void updateFps(int newFps);
+	void updateSpeed();
 	void updateRange();
 	void setCrop(const QRectF &rect);
 	void resetCrop();
+	void refreshCanvas();
 
 private:
+	int getTimerInterval() const;
 	void resetFrameCache();
 	bool searchIdenticalFrame(int f, QPixmap &outFrame);
 
@@ -47,7 +49,6 @@ private:
 	QList<QPixmap> m_frames;
 	QTimer *m_timer;
 	QRect m_crop;
-	int m_realFps;
 };
 
 }

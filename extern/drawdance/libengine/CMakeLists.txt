@@ -94,6 +94,7 @@ target_link_libraries(dpengine PRIVATE
     $<BUILD_INTERFACE:parson>
     dpmsg
     dpcommon
+    ZLIB::ZLIB
 )
 
 # Qt is too heavy a dependency just for an XML parser, libzip has to be compiled

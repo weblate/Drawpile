@@ -220,6 +220,7 @@ if(BASE)
 				patches/cast_types_for_egl_x11_test.diff
 				patches/qmake_android_ltcg.diff
 				patches/qtbug-112504.diff
+				patches/qandroidassetsfileenginehandler_dot_slash.diff
 	)
 endif()
 

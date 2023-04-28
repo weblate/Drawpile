@@ -135,6 +135,8 @@ public slots:
 
 	void setLocked(bool lock);
 
+	void setResetInProgress(bool resetInProgress);
+
 	//! Send pointer position updates even when not drawing
 	void setPointerTracking(bool tracking);
 
@@ -221,6 +223,10 @@ private:
 
 	void resetCursor();
 
+	void drawPixelGrid(QPainter *painter, const QRectF& rect);
+	void drawCursorOutline(QPainter *painter, const QRectF& rect);
+	void drawResetCover(QPainter *painter, const QRectF& rect);
+
 	inline void viewRectChanged() { emit viewRectChange(mapToScene(rect())); }
 
 	CanvasShortcuts m_canvasShortcuts;
@@ -282,6 +288,7 @@ private:
 
 	bool m_enableTablet;
 	bool m_locked;
+	bool m_resetInProgress;
 	bool m_pointertracking;
 	bool m_pixelgrid;
 

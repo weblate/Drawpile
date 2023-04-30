@@ -222,6 +222,7 @@ if(BASE)
 				patches/qmake_android_ltcg.diff
 				patches/qtbug-112504.diff
 				patches/qandroidassetsfileenginehandler_dot_slash.diff
+				patches/qtbug-92199.diff
 	)
 endif()
 

@@ -2,664 +2,1037 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
-    <name>AnimationSaverRunnable</name>
-    <message>
-        <location filename="../export/animationsaverrunnable.cpp" line="55"/>
-        <source>Couldn&apos;t open file for writing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../export/animationsaverrunnable.cpp" line="56"/>
-        <source>An error occurred while saving image</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AnnouncementListModel</name>
-    <message>
-        <location filename="../net/announcementlist.cpp" line="48"/>
-        <source>Private</source>
-        <translation type="unfinished">私密</translation>
-    </message>
-    <message>
-        <location filename="../net/announcementlist.cpp" line="48"/>
-        <source>Public</source>
-        <translation type="unfinished">公开</translation>
-    </message>
-    <message>
-        <location filename="../net/announcementlist.cpp" line="72"/>
-        <source>Server</source>
-        <translation type="unfinished">服务器</translation>
-    </message>
-    <message>
-        <location filename="../net/announcementlist.cpp" line="73"/>
-        <source>Room code</source>
-        <translation type="unfinished">房间代码</translation>
-    </message>
-    <message>
-        <location filename="../net/announcementlist.cpp" line="74"/>
-        <source>Mode</source>
-        <translation type="unfinished">模式</translation>
-    </message>
-</context>
-<context>
     <name>AvatarListModel</name>
     <message>
-        <location filename="../utils/avatarlistmodel.cpp" line="105"/>
+        <location filename="../utils/avatarlistmodel.cpp" line="+89"/>
         <source>No avatar</source>
         <translation>无头像</translation>
     </message>
 </context>
 <context>
-    <name>BanlistModel</name>
-    <message>
-        <location filename="../net/banlistmodel.cpp" line="76"/>
-        <source>User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../net/banlistmodel.cpp" line="77"/>
-        <source>IP address</source>
-        <translation type="unfinished">IP address</translation>
-    </message>
-    <message>
-        <location filename="../net/banlistmodel.cpp" line="78"/>
-        <source>Banned by</source>
-        <translation type="unfinished">Banned by</translation>
-    </message>
-</context>
-<context>
-    <name>BrushPresetModel</name>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="608"/>
-        <source>Default</source>
-        <translation type="unfinished">默认</translation>
-    </message>
-</context>
-<context>
-    <name>BrushPresetTagModel</name>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="508"/>
-        <source>All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="510"/>
-        <source>Untagged</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="517"/>
-        <source>Show all brushes, regardless of tagging.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="519"/>
-        <source>Show brushes not assigned to any tag.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="687"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="719"/>
-        <source>Default</source>
-        <translation type="unfinished">默认</translation>
-    </message>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="707"/>
-        <source>Classic Brush %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="708"/>
-        <source>Converted from %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="729"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="764"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="776"/>
-        <source>Round Pixel Brush %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="730"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="743"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="754"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="765"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="777"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="789"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="803"/>
-        <source>Default brush %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../brushes/brushpresetmodel.cpp" line="742"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="753"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="788"/>
-        <location filename="../brushes/brushpresetmodel.cpp" line="802"/>
-        <source>Soft Brush %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>CanvasSaverRunnable</name>
     <message>
-        <location filename="../export/canvassaverrunnable.cpp" line="40"/>
-        <source>Couldn&apos;t open file for writing</source>
-        <translation type="unfinished"></translation>
+        <location filename="../export/canvassaverrunnable.cpp" line="+34"/>
+        <source>Bad arguments, this is probably a bug in Drawpile.</source>
+        <translation>糟糕的争论, 这可能是Drawpile的一个bug.</translation>
     </message>
     <message>
-        <location filename="../export/canvassaverrunnable.cpp" line="41"/>
-        <source>An error occurred while saving image</source>
-        <translation type="unfinished"></translation>
+        <location line="+2"/>
+        <source>No file extension given.</source>
+        <translation>没有给出文件扩展名.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Unsupported format.</source>
+        <translation>不支持的格式.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Couldn&apos;t merge the canvas into a flat image.</source>
+        <translation>无法将画布合并成一个平面图像.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Couldn&apos;t open file for writing.</source>
+        <translation>无法打开文件进行写入.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Save operation failed, but the file might have been partially written.</source>
+        <translation>保存操作失败, 但文件可能被部分写入.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Internal error during saving.</source>
+        <translation>保存时出现内部错误.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Unknown error.</source>
+        <translation>未知错误.</translation>
     </message>
 </context>
 <context>
-    <name>Client</name>
+    <name>CanvasShortcutsModel</name>
     <message>
-        <location filename="../net/client.cpp" line="65"/>
-        <source>A server error occurred!</source>
-        <translation type="unfinished">服务器发生错误!</translation>
+        <location filename="../utils/canvasshortcutsmodel.cpp" line="+91"/>
+        <source>Shortcut</source>
+        <translation>快捷键</translation>
     </message>
     <message>
-        <location filename="../net/client.cpp" line="68"/>
-        <source>The server is shutting down!</source>
-        <translation type="unfinished">服务器已关闭!</translation>
+        <location line="+2"/>
+        <source>Action</source>
+        <translation>动作</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Modifiers</source>
+        <translation>修饰键</translation>
+    </message>
+    <message>
+        <location line="+62"/>
+        <source>%1</source>
+        <extracomment>Example: &quot;Pan Canvas&quot;</extracomment>
+        <translation>%1</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>%1 (%2)</source>
+        <extracomment>Example: &quot;Pan Canvas (Inverted)&quot;</extracomment>
+        <translation>%1 (%2)</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>%1: %2</source>
+        <extracomment>Example: &quot;Space: Pan Canvas&quot;</extracomment>
+        <translation>%1: %2</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>%1: %2 (%3)</source>
+        <extracomment>Example: &quot;Space: Pan Canvas (Inverted)&quot;</extracomment>
+        <translation>%1: %2 (%3)</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Mouse Wheel</source>
+        <translation>鼠标滚轮</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>+</source>
+        <extracomment>Joins shortcut components, probably doesn&apos;t need to be translated.</extracomment>
+        <translation>+</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Unset</source>
+        <translation>未设置</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Left Click</source>
+        <translation>左键点击</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Right Click</source>
+        <translation>右键点击</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Middle Click</source>
+        <translation>中键点击</translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Unknown Button 0x%1</source>
+        <translation>未知按钮 0x%1</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Button %1</source>
+        <translation>按钮 %1</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Pan Canvas</source>
+        <translation>移动画布</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Rotate Canvas</source>
+        <translation>旋转画布</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Zoom Canvas</source>
+        <translation>缩放画布</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Pick Color</source>
+        <translation>拾色</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Pick Layer</source>
+        <translation>选择图层</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Change Brush Size</source>
+        <translation>改变笔刷大小</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Constrain Tool</source>
+        <translation>约束工具</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Center Tool</source>
+        <translation>居中工具</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Constrain and Center Tool</source>
+        <translation>约束和居中工具</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Unknown Constraint 0x%1</source>
+        <translation>未知约束0x%1</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Unknown Action %1</source>
+        <translation>未知动作%1</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Inverted, Swap Axes</source>
+        <translation>反转,切换轴向</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Inverted</source>
+        <translation>反转</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Swap Axes</source>
+        <translation>切换轴向</translation>
     </message>
 </context>
 <context>
     <name>CustomShortcutModel</name>
     <message>
-        <location filename="../utils/customshortcutmodel.cpp" line="97"/>
+        <location filename="../utils/customshortcutmodel.cpp" line="+80"/>
         <source>Action</source>
         <translation>动作</translation>
     </message>
     <message>
-        <location filename="../utils/customshortcutmodel.cpp" line="98"/>
+        <location line="+1"/>
         <source>Shortcut</source>
         <translation>快捷键</translation>
     </message>
     <message>
-        <location filename="../utils/customshortcutmodel.cpp" line="99"/>
+        <location line="+1"/>
         <source>Alternate</source>
-        <translation type="unfinished"></translation>
+        <translation>备选</translation>
     </message>
     <message>
-        <location filename="../utils/customshortcutmodel.cpp" line="100"/>
+        <location line="+1"/>
         <source>Default</source>
         <translation>默认</translation>
     </message>
 </context>
 <context>
+    <name>Document</name>
+    <message>
+        <location filename="../document.cpp" line="+607"/>
+        <source>Unknown format.</source>
+        <translation>未知格式.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Header error.</source>
+        <translation>标题错误.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Error opening file.</source>
+        <translation>打开文件时出现错误.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Error starting recorder.</source>
+        <translation>启动录制时出现错误.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Unknown error.</source>
+        <translation>未知错误.</translation>
+    </message>
+</context>
+<context>
     <name>FfmpegExporter</name>
     <message>
-        <location filename="../export/ffmpegexporter.cpp" line="138"/>
+        <location filename="../export/ffmpegexporter.cpp" line="+129"/>
         <source>Couldn&apos;t start ffmpeg!</source>
-        <translation type="unfinished"></translation>
+        <translation>无法启动ffmpeg!</translation>
     </message>
     <message>
-        <location filename="../export/ffmpegexporter.cpp" line="141"/>
+        <location line="+3"/>
         <source>Ffmpeg crashed!</source>
-        <translation type="unfinished"></translation>
+        <translation>ffmpeg崩溃了!</translation>
     </message>
     <message>
-        <location filename="../export/ffmpegexporter.cpp" line="144"/>
+        <location line="+3"/>
         <source>Ffmpeg process error</source>
-        <translation type="unfinished"></translation>
+        <translation>ffmpeg进程错误</translation>
     </message>
 </context>
 <context>
-    <name>LoginHandler</name>
+    <name>FloodFill</name>
     <message>
-        <location filename="../net/login.cpp" line="114"/>
-        <location filename="../net/login.cpp" line="372"/>
-        <source>Invalid state</source>
-        <translation type="unfinished">状态无效</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="139"/>
-        <location filename="../net/login.cpp" line="146"/>
-        <location filename="../net/login.cpp" line="210"/>
-        <location filename="../net/login.cpp" line="409"/>
-        <location filename="../net/login.cpp" line="530"/>
-        <location filename="../net/login.cpp" line="572"/>
-        <source>Incompatible server</source>
-        <translation type="unfinished">服务器不兼容</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="153"/>
-        <source>Server is for a different Drawpile version!</source>
-        <translation type="unfinished">Server is for a different Drawpile version!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="195"/>
-        <source>Secure mode not enabled on a trusted host!</source>
-        <translation type="unfinished">安全模式没有在信任的主机上启动!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="236"/>
-        <source>This server does not allow guest logins</source>
-        <translation type="unfinished">此服务器不支持非注册用户登入</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="238"/>
-        <source>Password needed to log in as &quot;%1&quot;</source>
-        <translation type="unfinished"> &quot;%1&quot; 需要登录密码</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="305"/>
-        <location filename="../net/login.cpp" line="311"/>
-        <source>Auth server error: %1</source>
-        <translation type="unfinished">Auth server error: %1</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="330"/>
-        <source>Group membership needed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="333"/>
-        <source>Unexpected ext-auth response: %1</source>
-        <translation type="unfinished">意外的ext-auth响应: %1</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="355"/>
-        <source>Server misconfiguration: invalid ext-auth URL</source>
-        <translation type="unfinished">服务器配置错误：ext-auth URL无效</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="360"/>
-        <source>Unsupported ext-auth URL scheme</source>
-        <translation type="unfinished">Unsupported ext-auth URL scheme</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="449"/>
-        <source>New version</source>
-        <translation type="unfinished">新版本</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="453"/>
-        <source>Unknown version</source>
-        <translation type="unfinished">未知版本</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="494"/>
-        <source>Session not yet started!</source>
-        <translation type="unfinished">Session not yet started!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="497"/>
-        <source>Blocked by parental controls</source>
-        <translation type="unfinished">Blocked by parental controls</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="500"/>
-        <source>Session for a different Drawpile version (%s) in progress!</source>
-        <translation type="unfinished">Session for a different Drawpile version (%s) in progress!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="685"/>
-        <location filename="../net/login.cpp" line="705"/>
-        <source>Invalid SSL certificate for host %1</source>
-        <translation type="unfinished">服务器 %1 证书无效</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="688"/>
-        <source>Certificate of a trusted server has changed!</source>
-        <translation type="unfinished">信任的服务器证书已更改!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="746"/>
-        <source>Cancelled</source>
-        <translation type="unfinished">已取消</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="755"/>
-        <source>Session not found!</source>
-        <translation type="unfinished">未找到房间!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="757"/>
-        <source>Incorrect password!</source>
-        <translation type="unfinished">密码错误!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="760"/>
-        <source>Invalid username!</source>
-        <translation type="unfinished">用户名无效!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="762"/>
-        <source>This username has been locked</source>
-        <translation type="unfinished">该用户名已被锁定</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="764"/>
-        <source>Username already taken!</source>
-        <translation type="unfinished">用户名已被使用!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="766"/>
-        <source>Session is closed!</source>
-        <translation type="unfinished">房间已关闭!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="766"/>
-        <source>Server is full!</source>
-        <translation type="unfinished">服务器已满!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="768"/>
-        <source>Hosting not authorized</source>
-        <translation type="unfinished">主机未被授权</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="770"/>
-        <source>You have been banned from this session!</source>
-        <translation type="unfinished">你已经被禁止访问该房间!</translation>
-    </message>
-    <message>
-        <location filename="../net/login.cpp" line="772"/>
-        <source>Session alias is reserved!</source>
-        <translation type="unfinished">房间别名已保留!</translation>
+        <location filename="../tools/floodfill.cpp" line="+53"/>
+        <source>Size limit exceeded.</source>
+        <translation>超过尺寸限制.</translation>
     </message>
 </context>
 <context>
-    <name>LoginSessionModel</name>
+    <name>KeyFrameLayerModel</name>
     <message>
-        <location filename="../net/loginsessions.cpp" line="73"/>
-        <source>(untitled)</source>
-        <translation type="unfinished">(未命名)</translation>
+        <location filename="../utils/keyframelayermodel.cpp" line="+23"/>
+        <source>Visibility: Hidden</source>
+        <translation>可见性: 隐藏</translation>
     </message>
     <message>
-        <location filename="../net/loginsessions.cpp" line="97"/>
-        <source>Incompatible version (%1)</source>
-        <translation type="unfinished"></translation>
+        <location line="+2"/>
+        <source>Visibility: Revealed</source>
+        <translation>可见性: 揭示</translation>
     </message>
     <message>
-        <location filename="../net/loginsessions.cpp" line="138"/>
-        <source>Title</source>
-        <translation type="unfinished">标题</translation>
-    </message>
-    <message>
-        <location filename="../net/loginsessions.cpp" line="139"/>
-        <source>Started by</source>
-        <translation type="unfinished">开始于</translation>
-    </message>
-    <message>
-        <location filename="../net/loginsessions.cpp" line="140"/>
-        <source>Users</source>
-        <translation type="unfinished">用户</translation>
+        <location line="+2"/>
+        <source>Visibility: Parent</source>
+        <translation>可见性: 限制</translation>
     </message>
 </context>
 <context>
     <name>QGuiApplication</name>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="91"/>
+        <location filename="../net/sessionlistingmodel.cpp" line="+66"/>
         <source>%1h %2m</source>
         <translation>%1小时%2分钟</translation>
     </message>
     <message>
-        <location filename="../utils/images.cpp" line="104"/>
+        <location filename="../utils/images.cpp" line="+99"/>
         <source>Images (%1)</source>
-        <translation>Images (%1)</translation>
+        <translation>图像 (%1)</translation>
     </message>
     <message>
-        <location filename="../utils/images.cpp" line="112"/>
+        <location line="+5"/>
+        <source>GIF (%1)</source>
+        <translation>GIF (%1)</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Binary Recordings (%1)</source>
-        <translation>Binary Recordings (%1)</translation>
+        <translation>二进制录像 (%1)</translation>
     </message>
     <message>
-        <location filename="../utils/images.cpp" line="113"/>
+        <location line="+1"/>
         <source>Text Recordings (%1)</source>
-        <translation>Text Recordings (%1)</translation>
+        <translation>文本录像 (%1)</translation>
     </message>
     <message>
-        <location filename="../utils/images.cpp" line="120"/>
+        <location line="+7"/>
         <source>Recordings (%1)</source>
         <translation>录像 (%1)</translation>
     </message>
     <message>
-        <location filename="../utils/images.cpp" line="127"/>
-        <source>All Supported Files (%1)</source>
-        <translation>所有支持格式 (%1)</translation>
+        <location line="+7"/>
+        <source>Performance Profile (%1)</source>
+        <translation>性能概况 (%1)</translation>
     </message>
     <message>
-        <location filename="../utils/images.cpp" line="133"/>
+        <location line="+10"/>
+        <source>Debug Dumps (%1)</source>
+        <translation>调试数据 (%1)</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Tablet Event Log (%1)</source>
+        <translation>数位板事件日志 (%1)</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>MP4 Video (%1)</source>
+        <translation>MP4 视频 (%1)</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>WebM Video (%1)</source>
+        <translation>WebM 视频 (%1)</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>All Supported Files (%1)</source>
+        <translation>所有支持的文件 (%1)</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>All Files (*)</source>
         <translation>所有文件(*)</translation>
     </message>
 </context>
 <context>
+    <name>QObject</name>
+    <message>
+        <location filename="../drawdance/canvasstate.cpp" line="+46"/>
+        <source>Layer %1</source>
+        <translation>图层 %1</translation>
+    </message>
+</context>
+<context>
+    <name>QShortcut</name>
+    <message>
+        <location filename="../utils/canvasshortcutsmodel.cpp" line="-101"/>
+        <source>Shift</source>
+        <translation>Shift键</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Alt</source>
+        <translation>Alt键</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Ctrl</source>
+        <translation>Ctrl键</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Meta</source>
+        <translation>Windows键</translation>
+    </message>
+</context>
+<context>
     <name>SessionListingModel</name>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="123"/>
+        <location filename="../net/sessionlistingmodel.cpp" line="+32"/>
         <source>(untitled)</source>
         <translation>(未命名)</translation>
     </message>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="144"/>
-        <source>New version</source>
-        <translation>新版本</translation>
+        <location line="+35"/>
+        <source>Drawpile 2.2 (fully compatible)</source>
+        <translation type="unfinished">Drawpile 2.2 (完全兼容)</translation>
     </message>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="148"/>
-        <source>Unknown version</source>
-        <translation>未知版本</translation>
+        <location line="+2"/>
+        <source>Drawpile 2.1 (compatibility mode)</source>
+        <translation type="unfinished">Drawpile 2.1 (兼容模式)</translation>
     </message>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="150"/>
-        <source>Incompatible version (%1)</source>
-        <translation>不兼容的版本 (%1)</translation>
+        <location line="+2"/>
+        <source>%1 (incompatible)</source>
+        <translation type="unfinished">%1 (不兼容)</translation>
     </message>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="190"/>
+        <location line="+4"/>
+        <source>Incompatible version</source>
+        <translation type="unfinished">不兼容的版本</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Session password required</source>
+        <translation type="unfinished">需要房间密码</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>%1 (not safe for minors)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+4"/>
+        <source>%n user(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+53"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="191"/>
+        <location line="+1"/>
         <source>Server</source>
         <translation>服务器</translation>
     </message>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="192"/>
+        <location line="+1"/>
         <source>Users</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="193"/>
+        <location line="+1"/>
         <source>Owner</source>
         <translation>所有者</translation>
     </message>
     <message>
-        <location filename="../net/sessionlistingmodel.cpp" line="194"/>
+        <location line="+1"/>
         <source>Age</source>
         <translation>存在时长</translation>
     </message>
 </context>
 <context>
-    <name>TcpServer</name>
-    <message>
-        <location filename="../net/tcpserver.cpp" line="118"/>
-        <source>Received invalid data</source>
-        <translation type="unfinished">接受信息无效</translation>
-    </message>
-</context>
-<context>
-    <name>UserListModel</name>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="74"/>
-        <source>Moderator</source>
-        <translation type="unfinished">Moderator</translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="76"/>
-        <source>Operator</source>
-        <translation type="unfinished">Operator</translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="78"/>
-        <source>Trusted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="80"/>
-        <source>Registered</source>
-        <translation type="unfinished">注册用户</translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="84"/>
-        <source>Online</source>
-        <translation type="unfinished">Online</translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="84"/>
-        <source>Offline</source>
-        <translation type="unfinished">Offline</translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="114"/>
-        <source>User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="115"/>
-        <source>Type</source>
-        <translation type="unfinished">类型</translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="116"/>
-        <source>Status</source>
-        <translation type="unfinished">状态</translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="291"/>
-        <source>Server</source>
-        <translation type="unfinished">服务器</translation>
-    </message>
-    <message>
-        <location filename="../canvas/userlist.cpp" line="298"/>
-        <source>User #%1</source>
-        <translation type="unfinished">用户 #%1</translation>
-    </message>
-</context>
-<context>
     <name>blendmode</name>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="53"/>
+        <location filename="../canvas/blendmodes.cpp" line="+40"/>
         <source>Normal</source>
-        <translation type="unfinished">普通</translation>
+        <translation>普通</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="58"/>
+        <location line="+5"/>
         <source>Recolor</source>
-        <translation type="unfinished">Recolor</translation>
+        <translation>Recolor</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="63"/>
+        <location line="+5"/>
         <source>Behind</source>
-        <translation type="unfinished">覆盖</translation>
+        <translation>覆盖</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="68"/>
+        <location line="+5"/>
         <source>Multiply</source>
-        <translation type="unfinished">乘</translation>
+        <translation>正片叠底</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="73"/>
+        <location line="+5"/>
         <source>Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>滤色</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="78"/>
+        <location line="+5"/>
         <source>Overlay</source>
-        <translation type="unfinished"></translation>
+        <translation>叠加</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="83"/>
+        <location line="+5"/>
         <source>Divide</source>
-        <translation type="unfinished">除</translation>
+        <translation>划分</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="88"/>
+        <location line="+5"/>
         <source>Burn</source>
-        <translation type="unfinished">加深</translation>
+        <translation>加深</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="93"/>
+        <location line="+5"/>
         <source>Dodge</source>
-        <translation type="unfinished">减淡</translation>
+        <translation>减淡</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="98"/>
+        <location line="+5"/>
         <source>Darken</source>
-        <translation type="unfinished">变暗</translation>
+        <translation>变暗</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="103"/>
+        <location line="+5"/>
         <source>Lighten</source>
-        <translation type="unfinished">变亮</translation>
+        <translation>变亮</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="108"/>
+        <location line="+5"/>
         <source>Subtract</source>
-        <translation type="unfinished">减</translation>
+        <translation>减去</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="113"/>
+        <location line="+5"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>线性减淡</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="118"/>
+        <location line="+5"/>
         <source>Erase</source>
-        <translation type="unfinished">擦除</translation>
+        <translation>擦除</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="123"/>
+        <location line="+5"/>
+        <source>Color Erase</source>
+        <translation>颜色擦除</translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Hard Light</source>
-        <translation type="unfinished"></translation>
+        <translation>强光</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="128"/>
+        <location line="+5"/>
         <source>Soft Light</source>
-        <translation type="unfinished"></translation>
+        <translation>柔光</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="133"/>
+        <location line="+5"/>
         <source>Linear Burn</source>
-        <translation type="unfinished"></translation>
+        <translation>线性加深</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="138"/>
+        <location line="+5"/>
         <source>Linear Light</source>
-        <translation type="unfinished"></translation>
+        <translation>线性光</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="143"/>
+        <location line="+5"/>
         <source>Luminosity/Shine (SAI)</source>
-        <translation type="unfinished"></translation>
+        <translation>发光</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="148"/>
+        <location line="+5"/>
         <source>Hue</source>
-        <translation type="unfinished">色相</translation>
+        <translation>色相</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="153"/>
+        <location line="+5"/>
         <source>Saturation</source>
-        <translation type="unfinished">饱和度</translation>
+        <translation>饱和度</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="158"/>
+        <location line="+5"/>
         <source>Luminosity</source>
-        <translation type="unfinished"></translation>
+        <translation>明度</translation>
     </message>
     <message>
-        <location filename="../canvas/blendmodes.cpp" line="163"/>
+        <location line="+5"/>
         <source>Color</source>
-        <translation type="unfinished">颜色</translation>
+        <translation>颜色</translation>
+    </message>
+</context>
+<context>
+    <name>brushes::BrushPresetModel</name>
+    <message>
+        <location filename="../brushes/brushpresetmodel.cpp" line="+638"/>
+        <source>Default</source>
+        <translation>默认</translation>
+    </message>
+</context>
+<context>
+    <name>brushes::BrushPresetTagModel</name>
+    <message>
+        <location line="-98"/>
+        <source>All</source>
+        <translation>全部</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Untagged</source>
+        <translation>未添加标签的</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Show all brushes, regardless of tagging.</source>
+        <translation>显示全部笔刷,不管是否添加标签.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Show brushes not assigned to any tag.</source>
+        <translation>显示未添加标签的笔刷.</translation>
+    </message>
+    <message>
+        <location line="+166"/>
+        <source>Default</source>
+        <translation>默认</translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Classic Brush %1</source>
+        <translation>Classic Brush %1</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Converted from %1.</source>
+        <translation>Converted from %1.</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Can&apos;t open &apos;%1&apos;.</source>
+        <translation>无法打开 &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <source>Invalid brush pack: order.conf not found inside</source>
+        <translation>无效笔刷包: 里面未找到order.conf</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Uncategorized %1</source>
+        <translation>未分类 %1</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Invalid brush pack: order.conf contains no brushes</source>
+        <translation>无效笔刷包: order.conf 未包含笔刷</translation>
+    </message>
+    <message>
+        <location line="+73"/>
+        <source>Could not create brush preset &apos;%1&apos;.</source>
+        <translation>无法创建笔刷预设&apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Could not assign brush &apos;%1&apos; to tag &apos;%2&apos;.</source>
+        <translation>无法将笔刷&apos;%1&apos;分配给标签&apos;%2&apos;.</translation>
+    </message>
+    <message>
+        <location line="-25"/>
+        <source>Could not create tag &apos;%1&apos;.</source>
+        <translation>无法创建标签&apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <location line="+43"/>
+        <source>Can&apos;t read brush file &apos;%1&apos;</source>
+        <translation>无法读取笔刷文件 &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Brush file &apos;%1&apos; does not contain valid JSON: %1</source>
+        <translation>笔刷文件 &apos;%1&apos; 不包含有效的 JSON: %1</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Can&apos;t load brush from brush file &apos;%1&apos;</source>
+        <translation>无法从笔刷文件&apos;%1&apos;中加载笔刷</translation>
+    </message>
+</context>
+<context>
+    <name>canvas::PaintEngine</name>
+    <message>
+        <location filename="../canvas/paintengine.cpp" line="+169"/>
+        <source>Layer %1</source>
+        <translation>图层 %1</translation>
+    </message>
+</context>
+<context>
+    <name>canvas::UserListModel</name>
+    <message>
+        <location filename="../canvas/userlist.cpp" line="+58"/>
+        <source>Moderator</source>
+        <translation>Moderator</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Operator</source>
+        <translation>Operator</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Trusted</source>
+        <translation>Trusted</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Registered</source>
+        <translation>注册用户</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Online</source>
+        <translation>Online</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Offline</source>
+        <translation>Offline</translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <source>User</source>
+        <translation>用户</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Type</source>
+        <translation>类型</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Status</source>
+        <translation>状态</translation>
+    </message>
+    <message>
+        <location line="+181"/>
+        <source>Server</source>
+        <translation>服务器</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>User #%1</source>
+        <translation>用户 #%1</translation>
+    </message>
+</context>
+<context>
+    <name>net::AnnouncementListModel</name>
+    <message>
+        <location filename="../net/announcementlist.cpp" line="+31"/>
+        <source>Private</source>
+        <translation>私密</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Public</source>
+        <translation>公开</translation>
+    </message>
+    <message>
+        <location line="+24"/>
+        <source>Server</source>
+        <translation>服务器</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Room code</source>
+        <translation>房间代码</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Mode</source>
+        <translation>模式</translation>
+    </message>
+</context>
+<context>
+    <name>net::BanlistModel</name>
+    <message>
+        <location filename="../net/banlistmodel.cpp" line="+59"/>
+        <source>User</source>
+        <translation>User</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>IP address</source>
+        <translation>IP address</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Banned by</source>
+        <translation>Banned by</translation>
+    </message>
+</context>
+<context>
+    <name>net::Client</name>
+    <message>
+        <location filename="../net/client.cpp" line="+71"/>
+        <source>A server error occurred!</source>
+        <translation>服务器发生错误!</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>The server is shutting down!</source>
+        <translation>服务器已关闭!</translation>
+    </message>
+</context>
+<context>
+    <name>net::LoginHandler</name>
+    <message>
+        <location filename="../net/login.cpp" line="+97"/>
+        <location line="+258"/>
+        <source>Invalid state</source>
+        <translation>无效状态</translation>
+    </message>
+    <message>
+        <location line="-233"/>
+        <location line="+7"/>
+        <location line="+64"/>
+        <location line="+199"/>
+        <location line="+125"/>
+        <location line="+42"/>
+        <source>Incompatible server</source>
+        <translation>服务器不兼容</translation>
+    </message>
+    <message>
+        <location line="-423"/>
+        <source>Server is for a different Drawpile version!</source>
+        <translation>Server is for a different Drawpile version!</translation>
+    </message>
+    <message>
+        <location line="+42"/>
+        <source>Secure mode not enabled on a trusted host!</source>
+        <translation>安全模式没有在信任的主机上启动!</translation>
+    </message>
+    <message>
+        <location line="+573"/>
+        <source>Username already taken!</source>
+        <translation>用户名已被使用!</translation>
+    </message>
+    <message>
+        <location line="-532"/>
+        <source>This server does not allow guest logins</source>
+        <translation>此服务器不支持非注册用户登入</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Password needed to log in as &quot;%1&quot;</source>
+        <translation>&quot;%1&quot; 需要登录密码</translation>
+    </message>
+    <message>
+        <location line="+67"/>
+        <location line="+6"/>
+        <source>Auth server error: %1</source>
+        <translation>认证服务器错误: %1</translation>
+    </message>
+    <message>
+        <location line="+44"/>
+        <source>Server misconfiguration: invalid ext-auth URL</source>
+        <translation>服务器配置错误：ext-auth URL无效</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Unsupported ext-auth URL scheme</source>
+        <translation>不支持ext-auth的URL方案</translation>
+    </message>
+    <message>
+        <location line="+89"/>
+        <source>New version</source>
+        <translation>新版本</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Unknown version</source>
+        <translation>未知版本</translation>
+    </message>
+    <message>
+        <location line="+43"/>
+        <source>Session not yet started!</source>
+        <translation>Session not yet started!</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Blocked by parental controls</source>
+        <translation>已被控制面板屏蔽</translation>
+    </message>
+    <message>
+        <location line="+188"/>
+        <location line="+20"/>
+        <source>Invalid SSL certificate for host %1</source>
+        <translation>服务器 %1 证书无效</translation>
+    </message>
+    <message>
+        <location line="-17"/>
+        <source>Certificate of a trusted server has changed!</source>
+        <translation>信任的服务器证书已更改!</translation>
+    </message>
+    <message>
+        <location line="+78"/>
+        <source>Server is full!</source>
+        <translation>服务器已满!</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Hosting not authorized</source>
+        <translation>主机未被授权</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>You have been banned from this session!</source>
+        <translation>你已经被禁止访问该房间!</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Session alias is reserved!</source>
+        <translation>房间别名已保留!</translation>
+    </message>
+    <message>
+        <location line="-26"/>
+        <source>Cancelled</source>
+        <translation>已取消</translation>
+    </message>
+    <message>
+        <location line="-420"/>
+        <source>Group membership needed</source>
+        <translation>需要群组成员资格</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Unexpected ext-auth response: %1</source>
+        <translation>意外的ext-auth响应: %1</translation>
+    </message>
+    <message>
+        <location line="+171"/>
+        <source>Session for a different Drawpile version (%1) in progress!</source>
+        <translation>不同Drawpile版本（%1）的房间正在进行中!</translation>
+    </message>
+    <message>
+        <location line="+255"/>
+        <source>Session not found!</source>
+        <translation>未找到房间!</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Incorrect password!</source>
+        <translation>密码错误!</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Invalid username!</source>
+        <translation>用户名无效!</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This username has been locked</source>
+        <translation>该用户名已被锁定</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Session is closed!</source>
+        <translation>房间已关闭!</translation>
+    </message>
+</context>
+<context>
+    <name>net::LoginSessionModel</name>
+    <message>
+        <location filename="../net/loginsessions.cpp" line="+46"/>
+        <source>(untitled)</source>
+        <translation>(未命名)</translation>
+    </message>
+    <message>
+        <location line="+45"/>
+        <source>%1 (incompatible)</source>
+        <translation>%1 (不兼容)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Drawpile 2.1 (compatibility mode)</source>
+        <translation>Drawpile 2.1 (兼容模式)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Drawpile 2.2 (fully compatible)</source>
+        <translation>Drawpile 2.2 (完全兼容)</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Incompatible version</source>
+        <translation>不兼容的版本</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Closed (new logins blocked)</source>
+        <translation>已关闭的 (新的登入被阻止)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Session password required</source>
+        <translation>需要房间密码</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Not safe for minors</source>
+        <translation>不适合未成年人</translation>
+    </message>
+    <message>
+        <location line="+47"/>
+        <source>Title</source>
+        <translation>标题</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Started by</source>
+        <translation>开始于</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Users</source>
+        <translation>用户</translation>
+    </message>
+</context>
+<context>
+    <name>net::TcpServer</name>
+    <message>
+        <location filename="../net/tcpserver.cpp" line="+112"/>
+        <source>Received invalid data</source>
+        <translation>接受信息无效</translation>
     </message>
 </context>
 </TS>

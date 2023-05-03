@@ -29,6 +29,8 @@ public:
 	explicit LoginDialog(net::LoginHandler *login, QWidget *parent=nullptr);
 	~LoginDialog() override;
 
+	void reject() override;
+
 public slots:
 	void catchupProgress(int value);
 	void onLoginDone(bool join);

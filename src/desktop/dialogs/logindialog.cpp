@@ -52,8 +52,10 @@ struct LoginDialog::Private {
 	SessionFilterProxyModel *sessions;
 	Ui_LoginDialog *ui;
 
+	QDialog *parent;
 	QPushButton *okButton;
 	QPushButton *reportButton;
+	QPushButton *cancelButton;
 
 	QUrl extauthurl;
 	QSslCertificate oldCert, newCert;
@@ -62,7 +64,7 @@ struct LoginDialog::Private {
 
 	Private(net::LoginHandler *login, LoginDialog *dlg)
 		: mode(Mode::loading), loginHandler(login),
-		  ui(new Ui_LoginDialog)
+		  ui(new Ui_LoginDialog), parent(dlg)
 	{
 		Q_ASSERT(loginHandler);
 
@@ -113,6 +115,7 @@ struct LoginDialog::Private {
 
 		// Buttons
 		okButton = ui->buttonBox->button(QDialogButtonBox::Ok);
+		cancelButton = ui->buttonBox->button(QDialogButtonBox::Cancel);
 		okButton->setDefault(true);
 
 		reportButton = ui->buttonBox->addButton(LoginDialog::tr("Report..."), QDialogButtonBox::ActionRole);
@@ -179,7 +182,9 @@ void LoginDialog::Private::resetMode(Mode newMode)
 		break;
 	case Mode::catchup:
 		okButton->setVisible(false);
-		ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(LoginDialog::tr("Close"));
+		cancelButton->setVisible(false);
+		parent->setWindowFlags(parent->windowFlags() & ~Qt::WindowCloseButtonHint);
+		parent->show(); // Changing window flags causes the window to be hidden.
 		page = ui->catchupPage;
 		break;
 	case Mode::certChanged:
@@ -247,6 +252,15 @@ LoginDialog::LoginDialog(net::LoginHandler *login, QWidget *parent) :
 LoginDialog::~LoginDialog()
 {
 	delete d;
+}
+
+void LoginDialog::reject()
+{
+	if(d->mode == Mode::catchup) {
+		qWarning("Reject in wrong mode!");
+	} else {
+		QDialog::reject();
+	}
 }
 
 void LoginDialog::updateOkButtonEnabled()

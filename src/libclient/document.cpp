@@ -5,6 +5,7 @@ extern "C" {
 #include <dpimpex/load.h>
 #include <dpmsg/reset_stream.h>
 }
+#include "libclient/canvas/blendmodes.h"
 #include "libclient/canvas/canvasmodel.h"
 #include "libclient/canvas/layerlist.h"
 #include "libclient/canvas/paintengine.h"
@@ -2255,10 +2256,17 @@ void Document::fillArea(const QColor &color, DP_BlendMode mode, float opacity)
 
 	uint8_t contextId = m_client->myId();
 	QPoint pos = selection->bounds().topLeft();
+	int alphaPreservingMode = canvas::blendmode::toAlphaPreserving(mode);
 	for(int layerId : layerIds) {
+		int effectiveMode;
+		if(m_canvas->paintEngine()->isLayerAlphaLocked(layerId)) {
+			effectiveMode = alphaPreservingMode;
+		} else {
+			effectiveMode = mode;
+		}
 		net::makePutImageMessagesCompat(
-			m_messageBuffer, contextId, layerId, mode, pos.x(), pos.y(), mask,
-			m_client->isCompatibilityMode());
+			m_messageBuffer, contextId, layerId, effectiveMode, pos.x(),
+			pos.y(), mask, m_client->isCompatibilityMode());
 	}
 	if(m_messageBuffer.isEmpty()) {
 		return;

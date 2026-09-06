@@ -34,6 +34,7 @@ public:
 	bool isMultipart() const override;
 
 	void setActiveLayer(int layerId) override;
+	void setLayerAlphaLock(bool alphaLock) override;
 	void setSelectionValid(bool selectionValid) override;
 
 	void setParameters(
@@ -56,6 +57,7 @@ private:
 	QImage paintGradient(const QImage &mask, QGradient &gradient) const;
 
 	void previewPending();
+	int getEffectiveBlendMode() const;
 
 	QVector<QPointF> m_points;
 	QVector<QPointF> m_originalPoints;

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 #include "libclient/tools/gradient.h"
+#include "libclient/canvas/blendmodes.h"
 #include "libclient/canvas/canvasmodel.h"
 #include "libclient/canvas/layerlist.h"
 #include "libclient/canvas/paintengine.h"
@@ -161,7 +162,7 @@ void GradientTool::finishMultipart()
 			uint8_t contextId = localUserId();
 			net::MessageList msgs;
 			net::makePutImageMessagesCompat(
-				msgs, contextId, m_owner.activeLayer(), m_blendMode,
+				msgs, contextId, m_owner.activeLayer(), getEffectiveBlendMode(),
 				m_pendingPos.x(), m_pendingPos.y(), m_pendingImage,
 				isCompatibilityMode());
 			if(!msgs.isEmpty()) {
@@ -221,6 +222,14 @@ bool GradientTool::isMultipart() const
 void GradientTool::setActiveLayer(int layerId)
 {
 	Q_UNUSED(layerId);
+	if(isMultipart()) {
+		updatePending();
+	}
+}
+
+void GradientTool::setLayerAlphaLock(bool alphaLock)
+{
+	Q_UNUSED(alphaLock);
 	if(isMultipart()) {
 		updatePending();
 	}
@@ -441,9 +450,20 @@ void GradientTool::previewPending()
 			pe->clearFillPreview();
 		} else {
 			pe->previewFill(
-				m_owner.activeLayer(), m_blendMode, 1.0, m_pendingPos.x(),
-				m_pendingPos.y(), m_pendingImage);
+				m_owner.activeLayer(), getEffectiveBlendMode(), 1.0,
+				m_pendingPos.x(), m_pendingPos.y(), m_pendingImage);
 		}
+	}
+}
+
+int GradientTool::getEffectiveBlendMode() const
+{
+	canvas::CanvasModel *canvas = m_owner.model();
+	if(canvas &&
+	   canvas->paintEngine()->isLayerAlphaLocked(m_owner.activeLayer())) {
+		return canvas::blendmode::toAlphaPreserving(m_blendMode);
+	} else {
+		return m_blendMode;
 	}
 }
 

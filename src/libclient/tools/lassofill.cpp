@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 #include "libclient/tools/lassofill.h"
+#include "libclient/canvas/blendmodes.h"
 #include "libclient/canvas/canvasmodel.h"
 #include "libclient/canvas/paintengine.h"
 #include "libclient/canvas/selectionmodel.h"
@@ -54,17 +55,25 @@ void LassoFillTool::begin(const BeginParams &params)
 
 		QRect selBounds;
 		QImage selImage;
+		canvas::CanvasModel *canvas = m_owner.model();
 		if(m_owner.isSelectionMaskingEnabled()) {
-			canvas::SelectionModel *sel = m_owner.model()->selection();
+			canvas::SelectionModel *sel = canvas->selection();
 			if(sel->isValid()) {
 				selBounds = sel->bounds();
 				selImage = sel->image();
 			}
 		}
 
+		int blendMode;
+		int layerId = m_owner.activeLayer();
+		if(canvas->paintEngine()->isLayerAlphaLocked(layerId)) {
+			blendMode = canvas::blendmode::toAlphaPreserving(m_blendMode);
+		} else {
+			blendMode = m_blendMode;
+		}
+
 		m_shape.begin(
-			m_antiAlias, m_fan, m_owner.activeLayer(), m_blendMode, color,
-			selBounds, selImage);
+			m_antiAlias, m_fan, layerId, blendMode, color, selBounds, selImage);
 		m_lastTimeMsec = params.point.timeMsec();
 		m_owner.setStrokeEngineParams(
 			m_strokeEngine, getEffectiveStabilizerSampleCount(),

@@ -16,30 +16,52 @@ ZoomTool::ZoomTool(ToolController &owner)
 
 void ZoomTool::begin(const BeginParams &params)
 {
-	m_clickDetector.begin(params.viewPos, params.deviceType);
-	m_start = params.point.toPoint();
-	m_end = m_start;
+	m_scrubbing = m_scrub;
 	m_reverse = params.right;
-	m_zooming = true;
+	if(m_scrubbing) {
+		m_scrubPos = params.point;
+		m_scrubLast = params.viewPos;
+	} else {
+		m_clickDetector.begin(params.viewPos, params.deviceType);
+		m_start = params.point.toPoint();
+		m_end = m_start;
+	}
 }
 
 void ZoomTool::motion(const MotionParams &params)
 {
-	m_clickDetector.motion(params.viewPos);
-	m_end = params.point.toPoint();
-	updatePreview();
+	if(m_scrubbing) {
+		QPointF viewPos = params.viewPos;
+		qreal deltaY = m_scrubLast.y() - viewPos.y();
+		Q_EMIT m_owner.scrubZoomRequested(
+			m_reverse ? -deltaY : deltaY, m_scrubPos);
+		m_scrubLast = viewPos;
+	} else {
+		m_clickDetector.motion(params.viewPos);
+		m_end = params.point.toPoint();
+		updatePreview();
+	}
 }
 
 void ZoomTool::end(const EndParams &)
 {
-	m_clickDetector.end();
-	removePreview();
-	if(m_zooming) {
+	if(m_scrubbing) {
+		m_scrubbing = false;
+	} else {
+		m_clickDetector.end();
+		removePreview();
 		constexpr int STEPS = 3;
 		emit m_owner.zoomRequested(
 			m_clickDetector.isClick() ? getCenterRect() : getRect(),
 			m_reverse ? -STEPS : STEPS);
-		m_zooming = false;
+	}
+}
+
+void ZoomTool::setScrub(bool scrub)
+{
+	if(scrub != m_scrub) {
+		m_scrub = scrub;
+		setCapability(Capability::Fractional, scrub);
 	}
 }
 

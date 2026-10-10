@@ -316,6 +316,7 @@ signals:
 	void hideColorPickRequested();
 	void panRequested(int x, int y);
 	void zoomRequested(const QRect &rect, int steps);
+	void scrubZoomRequested(qreal delta, QPointF pos);
 	void resetRotationToolRequested(int rotationMode);
 	void moveRotationToolRequested(
 		const QPoint &point, const QPoint &lastPoint, bool invert);

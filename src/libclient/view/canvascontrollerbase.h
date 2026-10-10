@@ -95,6 +95,7 @@ public:
 	void zoomOutCursor();
 	void zoomSteps(int steps);
 	void zoomStepsAt(int steps, const QPointF &point);
+	void scrubZoomAt(qreal delta, QPointF point);
 	void setRotation(qreal degrees);
 	void resetRotation();
 	void resetRotationCursor();

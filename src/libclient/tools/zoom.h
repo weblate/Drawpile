@@ -19,6 +19,8 @@ public:
 	void motion(const MotionParams &params) override;
 	void end(const EndParams &params) override;
 
+	void setScrub(bool scrub);
+
 private:
 	void updatePreview() const;
 	void removePreview() const;
@@ -26,9 +28,12 @@ private:
 	QRect getCenterRect() const;
 
 	bool m_reverse = false;
-	bool m_zooming = false;
+	bool m_scrub = false;
+	bool m_scrubbing = false;
 	QPoint m_start;
 	QPoint m_end;
+	QPointF m_scrubPos;
+	QPointF m_scrubLast;
 	ClickDetector m_clickDetector;
 };
 

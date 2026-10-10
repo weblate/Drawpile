@@ -371,6 +371,9 @@ void ViewWrapper::connectDocument(Document *doc)
 		toolCtrl, &tools::ToolController::zoomRequested, m_controller,
 		&CanvasController::zoomTo);
 	connect(
+		toolCtrl, &tools::ToolController::scrubZoomRequested, m_controller,
+		&CanvasController::scrubZoomAt);
+	connect(
 		toolCtrl, &tools::ToolController::resetRotationToolRequested,
 		m_controller, &CanvasController::resetRotationTool);
 	connect(

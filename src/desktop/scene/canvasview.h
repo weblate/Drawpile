@@ -213,6 +213,8 @@ public slots:
 	//! Set the zoom factor in percents, centered on the given point
 	void setZoomAt(qreal zoom, const QPointF &point);
 
+	void scrubZoomAt(qreal delta, QPointF point);
+
 	void resetZoomCenter();
 	void resetZoomCursor();
 

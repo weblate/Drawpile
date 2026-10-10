@@ -381,6 +381,9 @@ void SceneWrapper::connectDocument(Document *doc)
 		toolCtrl, &tools::ToolController::zoomRequested, m_view,
 		&CanvasView::zoomTo);
 	connect(
+		toolCtrl, &tools::ToolController::scrubZoomRequested, m_view,
+		&CanvasView::scrubZoomAt);
+	connect(
 		toolCtrl, &tools::ToolController::resetRotationToolRequested, m_view,
 		&CanvasView::resetRotationTool);
 	connect(

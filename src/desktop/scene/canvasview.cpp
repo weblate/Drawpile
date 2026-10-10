@@ -738,6 +738,18 @@ void CanvasView::setZoomAt(qreal zoom, const QPointF &point)
 	}
 }
 
+void CanvasView::scrubZoomAt(qreal deltaY, QPointF point)
+{
+	if(deltaY != 0) {
+		qreal delta = qBound(-1.0, deltaY / 100.0, 1.0);
+		if(delta > 0.0) {
+			setZoomAt(m_zoom * (1.0 + delta), point);
+		} else if(delta < 0.0) {
+			setZoomAt(m_zoom / (1.0 - delta), point);
+		}
+	}
+}
+
 void CanvasView::setRotation(qreal angle)
 {
 	bool inverted = isRotationInverted();
@@ -2671,14 +2683,7 @@ void CanvasView::moveDrag(const QPoint &point)
 			m_dragSnapRotation, m_dragDiscreteRotation);
 		break;
 	case CanvasShortcuts::CANVAS_ZOOM:
-		if(deltaY != 0) {
-			qreal delta = qBound(-1.0, deltaY / 100.0, 1.0);
-			if(delta > 0.0) {
-				setZoomAt(m_zoom * (1.0 + delta), m_dragCanvasPoint);
-			} else if(delta < 0.0) {
-				setZoomAt(m_zoom / (1.0 - delta), m_dragCanvasPoint);
-			}
-		}
+		scrubZoomAt(deltaY, m_dragCanvasPoint);
 		break;
 	case CanvasShortcuts::TOOL_ADJUST1:
 		dragAdjust(int(tools::QuickAdjustType::Tool1), deltaX, 1.2);
